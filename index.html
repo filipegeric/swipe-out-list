@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Swipe Out List Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    html, body, #container {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .list {
+      overflow-x: auto;
+    }
+
+    .list, h3 {
+      opacity: 0.4;
+    }
+
+    #container {
+      text-align: center;
+    }
+
+    h3 {
+      background-color: rgb(148, 148, 148);
+      margin: 0;
+      font-size: 2em;
+    }
+
+    @media (max-width: 496px) {
+      .list {
+        width: 100%;
+        height: 100%;
+        border: none;
+        opacity: 1;
+      }
+
+      h3 {
+        opacity: 1;
+      }
+
+      h2 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="container">
+    <div><h2>Use mobile device or emulator to see this demo</h2></div>
+
+    <h3>Basic list</h3>
+    <div id="basic-list" class="list">
+
+    </div>
+
+    <h3>Styled list</h3>
+    <div id="styled-list" class="list">
+
+    </div>
+
+    <h3>List with DOM elements</h3>
+    <div id="dom-list" class="list">
+
+    </div>
+
+  </div>
+
+  <script src="swipe-out-list.js"></script>
+  <script>
+    let basicList = new SwipeOutList('basic-list', ['item one', 'item 2', 'three three three']);
+
+    let styledList = new SwipeOutList('styled-list', ['styled one', 'styled 2', 'three three three'], {
+      contentStyles: {
+        backgroundColor: 'lightblue',
+        borderBottom: 'solid 2px green',
+        justifyContent: 'center',
+        height: '4em'
+      },
+      backgroundStyles: {
+        backgroundColor: 'violet'
+      }
+    });
+
+    let a = document.createElement('a');
+    a.setAttribute('href', 'https://google.com');
+    a.innerText = 'google.com';
+    let div = document.createElement('div');
+    div.style.width = '100%';
+    div.style.display = 'flex';
+    div.style.justifyContent = 'space-around';
+    let link1 = document.createElement('a');
+    link1.setAttribute('href', '#');
+    link1.innerText = 'link1';
+    let link2 = document.createElement('a');
+    link2.setAttribute('href', '#');
+    link2.innerText = 'link2';
+    div.appendChild(link1);
+    div.appendChild(link2);
+    let domList = new SwipeOutList('dom-list', [a, div]);
+
+  </script>
+
+</body>
+</html>
